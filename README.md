@@ -9,7 +9,7 @@ In order to find all configurations (states) of the [Pocket Cube](https://en.wik
 ```
 time python solve_pocketcube.py 15 > all_results.txt
 ```
-It will only take approx 3 minutes on a i7 laptop (*Intel(R) Core(TM) i7-3537U CPU @ 2.00GHz*), approx 2 minutes on a i5 desktop (*Intel(R) Core(TM) i5-2400 CPU @ 3.10GHz*).
+It will only take approx 3 minutes on a i7 laptop (*Intel(R) Core(TM) i7-3537U CPU @ 2.00GHz*), approx 2 minutes on a i5 desktop (*Intel(R) Core(TM) i5-2400 CPU @ 3.10GHz*). The file in output will be 146Mb in size, containing all the scramblings with the moves to obtain each scrambling from the solved state.
 
 Then run: 
 ```
