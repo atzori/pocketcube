@@ -1,5 +1,8 @@
+#
+# Copyright 2016, Maurizio Atzori, University of Cagliari (Italy)
+#
 # moves are only: L  L' D  D' B  B' (in Singmaster notation)
-# represented as  1 -1  2 -2  3 -3
+# represented as  1 -1  2 -2  3 -3  (we add +3 to have non-negative numbers usable as array index)
 Rr = L =  1 +3
 Lr = R = -1 +3
 Ur = D =  2 +3
@@ -10,14 +13,17 @@ Br = F = -3 +3
 # sequences of moves (algorithms) are list of moves
 #
 # there are 8 cubies: 0-6 (7 is the origin), also representing positions
-# UP: 
+# face UP: 
 #        5  6
-#        4  V (8)
-# DOWN (rotating on the x axis):
+#        4  V (7)
+# face DOWN (rotating on the x axis):
 #        1  2
 #        0  3
-#
-# orientation of cubies is given by white or yellow.
+# 
+# That is, cubie white-red-blue is #7 and is in position 7 when the cube is solved.
+# Cubie yellow-green-orange is #0 and is in position 0 when the cube is solved.
+
+# orientation of cubies is given by the direction of the white or yellow sticker.
 # for each cubie can be: 
 # L    R 
 # D    U 
@@ -32,7 +38,7 @@ Br = F = -3 +3
 #
 # }
 #
-# or simply = [0, 1, 2, 3, 4, 5, 6, D, D, D, D, U,U,U ]   # that is, a vector of 14 elements
+# or simply = [0, 1, 2, 3, 4, 5, 6, D, D, D, D, U, U, U ]   # that is, a vector of 14 elements
 #
 
 def get_solved_cube():
@@ -56,14 +62,17 @@ oB  = list(oL)
 oBr = list(oL)
 
 
-for fr, to in [(U,F),(F,D),(D,B),(B,U),(L,L)]:  # pairs of from -> to orientations
+# Left and Left-Reverse rotation rules
+for fr, to in [(U,F),(F,D),(D,B),(B,U),(L,L)]:  # pairs of from -> to orientations (if it was Up, it will become Front after oLeft rotation)
 	oL[fr] = to
 	oLr[to] = fr
 
+# Down and Down-Reverse rotation rules
 for fr, to in [(D,D),(F,R),(R,B),(B,L),(L,F)]:  # pairs of from -> to orientations
 	oD[fr] = to
 	oDr[to] = fr
 
+# Back and Back-Reverse rotation rules
 for fr, to in [(B,B),(U,L),(L,D),(D,R),(R,U)]:  # pairs of from -> to orientations
 	oB[fr] = to
 	oBr[to] = fr
@@ -145,9 +154,4 @@ def number2state(n):
 		n /= 10
 	return [x for x in reversed(s)]
 
-
-#assert 
-#print move(get_solved_cube(),L)
-#print move(get_solved_cube(),D)
-#print move(get_solved_cube(),B)
 

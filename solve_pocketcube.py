@@ -1,3 +1,7 @@
+#
+# Copyright 2016, Maurizio Atzori, University of Cagliari (Italy)
+#
+
 from pocketcube import *
 from sys import stderr, argv
 #import multiprocessing
