@@ -1,5 +1,5 @@
 # PocketCube
-A fast python library to explore the search space of the Rubik's Pocket Cube (2x2x2).
+An extremely fast python library to explore the search space of the Rubik's Pocket Cube (2x2x2).
 The code is optimized and uses one core, but it can be parallelized easily to make it even faster.
 
 
