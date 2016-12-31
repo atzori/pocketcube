@@ -7,9 +7,16 @@ The code is optimized and uses one core, but it can be parallelized easily to ma
 
 In order to find all configurations (states) of the [Pocket Cube](https://en.wikipedia.org/wiki/Pocket_Cube) that can be reached by scrambling it with up to 15 moves (quarter turns, that is, only 90 degrees face rotations):
 ```
+time pypy solve_pocketcube.py 15 > all_results.txt
+```
+This will only take approx **30 seconds** on a i7 laptop (*Intel(R) Core(TM) i7-3537U CPU @ 2.00GHz*) with PyPy 5.1.2 with GCC 5.3.1.
+You can also run it on standard CPython:
+```
 time python solve_pocketcube.py 15 > all_results.txt
 ```
-It will only take approx 3 minutes on a i7 laptop (*Intel(R) Core(TM) i7-3537U CPU @ 2.00GHz*), approx 2 minutes on a i5 desktop (*Intel(R) Core(TM) i5-2400 CPU @ 3.10GHz*). The file in output will be 146Mb in size, containing all the scramblings with the moves to obtain each scrambling from the solved state.
+It will take approx 3 minutes on the same machine running Python 2.7.12.
+<!--It will take approx 3 minutes on a i7 laptop (*Intel(R) Core(TM) i7-3537U CPU @ 2.00GHz*), approx 2 minutes on a i5 desktop (*Intel(R) Core(TM) i5-2400 CPU @ 3.10GHz*).--> 
+The file in output will be about 150Mb in size, containing all the scramblings with the moves to obtain each scrambling from the solved state.
 
 Then run: 
 ```
